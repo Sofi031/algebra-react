@@ -1,25 +1,33 @@
+import "./App.css";
+import { InputElement } from "./components/InputElement";
+import Button from "./components/Button";
+import FormError from "./components/FormError";
+import FormMessage from "./components/FormMessage";
+import {User} from "./components/User";
 
-import './App.css';
+
 
 function App() {
+  const isSignedIn = true;
+
   return (
     <form className="form">
       <div className="form-field">
-        <label>
-          <p>Username</p>
-          <input type="text"></input>
-          
-        </label>
+        <InputElement label="Username" type="text" />
       </div>
-      <div>
-        <label>
-          <p>Password</p>
-          <input type="password"></input>
-        </label>
+      <div className="form-field">
+        <InputElement label="Password" type="password" />
       </div>
-      <div>
-        <button>Sign in</button>
+      <div className="form-field">
+        <Button type="button">Sign in</Button>
+        <Button type="reset">Reset</Button>
       </div>
+      <FormError visible={!isSignedIn} />
+      <FormMessage visible={isSignedIn} />
+      <User src="/avatar.png" alt="avatar" username="User1"  />
+      
+      
+
     </form>
   );
 }
